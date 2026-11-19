@@ -14,6 +14,17 @@ git clone <url этого репозитория> tactile-vla && cd tactile-vla
 bash scripts/setup_server.sh        # клоны в external/, симлинк адаптера, проверка окружения
 ```
 
+## 0.5. Проверка рендера камер (обязательно на A100/H100)
+
+Без sudo, ставит Miniconda (если нет), env `UniVTAC` с torch и isaacsim теми же версиями, что и `install.sh`, и рендерит один кадр:
+
+```bash
+bash scripts/rtx_smoke.sh 2>&1 | tee runs/rtx_smoke.log
+git add runs && git commit -m "run: rtx smoke" && git push
+```
+
+Смотреть строку `[RTXCHECK] VERDICT`. `FAIL` — симулятор на этой GPU не поедет, дальше шаг 1 не делать.
+
 ## 1. Симулятор UniVTAC (conda env `UniVTAC`, Python 3.10)
 
 ```bash
