@@ -1,0 +1,30 @@
+# UniVTAC <-> N0-VTLA adapter config (passed to Policy.__init__ as args)
+policy_name: N0VTLA
+seed: 0
+instruction_type: seen
+instuction_file: null   # sic: так ключ называется в UniVTAC
+
+# Address of scripts/serve_zmq.py from the N0-VTLA repo
+server_addr: tcp://127.0.0.1:5557
+request_timeout_ms: 60000
+
+# Which UniVTAC tactile image to send: rgb_marker (default) or rgb.
+# The released checkpoint's training frames are not documented; if success looks
+# far below the paper, try "rgb".
+tactile_type: rgb_marker
+
+# Joint action width of the checkpoint (sim_single_arm_tactile = 7 joints + gripper)
+action_dim: 8
+
+# null -> server's --default-prompt is used (recommended: "insert hole").
+prompt: null
+
+# Execute the full returned chunk before asking again (the N0-VTLA docs require it).
+# Set to a smaller number only for experiments.
+exec_steps: null
+
+# Logging: structure of the first observation + one line per action chunk.
+debug: true
+# Save PNGs of the first observation (camera + both tactile) to check what the model sees.
+# Relative to the UniVTAC folder. null to disable.
+dump_first_obs_dir: eval_result/N0VTLA/first_obs

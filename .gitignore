@@ -1,0 +1,11 @@
+# внешние репозитории и всё тяжёлое — только на сервере
+external/
+*.mp4
+*.safetensors
+*.ckpt
+*.pt
+__pycache__/
+*.pyc
+# временные логи до collect_logs.sh
+runs/server.log
+runs/sim.log
