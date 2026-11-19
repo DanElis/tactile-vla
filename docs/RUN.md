@@ -16,7 +16,7 @@ bash scripts/setup_server.sh        # клоны в external/, симлинк а
 
 ## 0.5. Проверка рендера камер (обязательно на A100/H100)
 
-Без sudo, ставит Miniconda (если нет), env `UniVTAC` с torch и isaacsim теми же версиями, что и `install.sh`, и рендерит один кадр:
+Без sudo и conda: ставит uv (если нет), venv `external/venvs/univtac` с torch и isaacsim теми же версиями, что и `install.sh`, и рендерит один кадр:
 
 ```bash
 bash scripts/rtx_smoke.sh 2>&1 | tee runs/rtx_smoke.log
